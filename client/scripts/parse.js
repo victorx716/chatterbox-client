@@ -13,7 +13,7 @@ var Parse = {
       error: errorCB || function(error) {
         console.error('chatterbox: Failed to fetch messages', error);
       }
-    })
+    });
 
   },
 

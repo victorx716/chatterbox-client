@@ -1,23 +1,23 @@
 var MessagesView = {
-
+//var delivery = data.results;
   $chats: $('#chats'),
 
   initialize: function() {
-    App.fetch((data) = function() {
-      data.results.map(function(ele) {
-         MessagesView.render(MessageView.render(ele));
-      })
-    });
+    App.fetch((delivery) = function() {
+        for (var key in delivery.results) {
+          console.log(delivery.results[key].objectId)
+
+          $('#chats').append(MessageView.render(delivery.results[key]));
+        }
+           
+
+      });
   },
-//look into when initialize is being called
+  //look into when initialize is being called
 
   render: function(message) {
-    // $.getJSON(`http://parse.${window.CAMPUS}.hackreactor.com/chatterbox/classes/messages`, function(data) {
-    //   console.log('got data', data);
-    //   $('body').append(data);
-    // })
 
-     MessagesView.$chats.append(message);
+    MessagesView.$chats.append(message);
     // $.ajax({
     //   url: "http://parse.sfm6.hackreactor.com/chatterbox/classes/messages",
     //   dataType: "json",
